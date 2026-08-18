@@ -1,0 +1,1 @@
+# No third-party packages required; the adapter uses Python standard library.
