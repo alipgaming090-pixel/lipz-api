@@ -1,15 +1,15 @@
-# new-garena-vercel-fixed
+# Lipzx API Adapter
 
-Vercel Python endpoint.
+This project exposes `/gen` in the response shape expected by Lipzx.py.
 
-Test after deployment:
+Required Vercel Environment Variable:
 
-/gen
+UPSTREAM_API_URL = your authorized account API endpoint
 
-or
+Example request:
+`/gen?name=laoe&count=1&region=BD&password_prefix=LIPZX&ghost=false&detect_rare=true`
 
-/gen?count=1
+Expected normalized response:
+`{"accounts":[{"uid":"...","account_id":"...","password":"...","name":"...","region":"..."}],"attempts_made":1,"rare_count":0,"success":true,"total_created":1,"total_requested":1}`
 
-Expected response:
-
-{"accounts":[],"attempts_made":3,"rare_count":0,"success":true,"total_created":0,"total_requested":1}
+The adapter does not create accounts itself. It only calls an upstream API that you control/are authorized to use and normalizes its response for Lipzx.py.
